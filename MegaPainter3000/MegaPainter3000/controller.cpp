@@ -103,18 +103,25 @@ QWidget* Controller::AddRow()//Добавляет новую строку в QLi
         //Видимость слоя
         QCheckBox *c = new QCheckBox;
         c->setMouseTracking(true);
+        //c->setFixedSize(30, 30);
+                c->setChecked(true);
+        c->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+//        c->setMaximumSize(30,30);
         c->setFixedSize(30, 30);
-        c->update();
-        c->setChecked(true);
+        c->setIconSize(QSize(30,30));
+
+//        c->setMinimumSize(30,30);
+          c->updateGeometry();
         check.push_front(c);
+
         QObject::connect(c, SIGNAL(clicked()), this, SLOT(on_visible_widget()));
         //Кнопка Поднять слой
         QPushButton *bUp = new QPushButton("∧");
         QObject::connect(bUp, SIGNAL(clicked()), this, SLOT(upRow()));
-        bUp->setFixedSize(c->sizeHint());
+        bUp->setFixedSize(c->size());
         //Кнопка Опустить слой
         QPushButton *bDown = new QPushButton("∨");
-        bDown->setFixedSize(c->sizeHint());
+        bDown->setFixedSize(c->size());
         QObject::connect(bDown, SIGNAL(clicked()), this, SLOT(downRow()));
         //Имя слоя
         QLineEdit *lNameLayer = new QLineEdit(str);
@@ -130,7 +137,9 @@ QWidget* Controller::AddRow()//Добавляет новую строку в QLi
 
         QVBoxLayout *vBut = new QVBoxLayout;
         vBut->addWidget(bUp);
+       // vBut->addSpacing(15);
         vBut->addWidget(c);
+      //  vBut->addSpacing(15);
         vBut->addWidget(bDown);
 
         QVBoxLayout *vName  = new QVBoxLayout;
@@ -143,7 +152,7 @@ QWidget* Controller::AddRow()//Добавляет новую строку в QLi
 
         QListWidgetItem *itm = new QListWidgetItem;
         lWid->insertItem(0,itm);
-        itm->setSizeHint(QSize(400, v->height()));
+        itm->setSizeHint(QSize(400, v->height()+25));
         lWid->setCurrentItem(itm,QItemSelectionModel::ClearAndSelect);
         //lWid->setCurrentRow(0);
 
