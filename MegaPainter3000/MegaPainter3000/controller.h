@@ -16,6 +16,19 @@
 #include <QAction>
 //#include <widrow.h>
 #include <QListWidget>
+#include <QRadioButton>
+
+
+struct WidOnListItem{
+    int index;
+    QCheckBox *bVisible;
+    QRadioButton *bDraw;
+    VisLayer *vLayer;
+    QLineEdit *leName;
+    QSlider *sOccup;
+    QListWidgetItem * LWitem;
+};
+
 
 class Controller: public QWidget
 {
@@ -25,6 +38,7 @@ class Controller: public QWidget
     QList<Layer* > *layers; //
     QList<VisLayer* > vislayers;
     Plane *plane;
+    QList<WidOnListItem *> lWidList;
 
 public:
     int enteredRow;
@@ -49,6 +63,7 @@ public slots:
     void on_clicked_plane();
     void on_current_item_change(int current);
     void on_listWidget_itemEntered(QListWidgetItem *item);
+    void on_recal_wid_on_item(const QModelIndex &parent, int start, int end, const QModelIndex &destination, int row);
 };
 
 #endif // CONTROLLER_H

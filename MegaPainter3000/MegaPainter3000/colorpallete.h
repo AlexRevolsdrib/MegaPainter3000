@@ -16,6 +16,7 @@
 #include <QList>
 #include <QColor>
 
+
 class ColorPallete : public QWidget
 {
     Q_OBJECT
