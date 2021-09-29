@@ -25,6 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        checkbuttton.cpp \
         colorone.cpp \
         colorpallete.cpp \
         controller.cpp \
@@ -35,6 +36,7 @@ SOURCES += \
         vislayer.cpp
 
 HEADERS += \
+        checkbuttton.h \
         colorone.h \
         colorpallete.h \
         controller.h \

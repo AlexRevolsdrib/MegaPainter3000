@@ -106,12 +106,38 @@ min-height: 12px;
 border-radius: 4px;
 }
 
+QPushButton#DrawActive {
 
-QToolButton
-{
-  border: 1px solid gray;
-  border-radius: 9px;
-  padding: 0 8px;
+width: 30px;
+height: 30px;
+background-color: #ffffff;
+border-radius: 6px;
+border-width: 1px;
+border-style: outset;
+margin: 15px 3 3;
+outline: none;
+image: url('C:/Users/sasha/Desktop/61456.png');
+position: relative;
+text-align: center;
+text-transform: none;
+border-color: #8A2BE2;
 }
+
+QPushButton#DrawNone {
+
+width: 30px;
+height: 30px;
+background-color: #ffffff;
+border-radius: 6px;
+border-width: 1px;
+border-style: outset;
+margin: 15px 3 3;
+outline: none;
+position: relative;
+text-align: center;
+text-transform: none;
+border-color: #8A2BE2;
+}
+
 
 

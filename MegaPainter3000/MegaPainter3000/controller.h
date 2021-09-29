@@ -22,7 +22,7 @@
 struct WidOnListItem{
     int index;
     QCheckBox *bVisible;
-    QRadioButton *bDraw;
+    QPushButton *bDraw;
     VisLayer *vLayer;
     QLineEdit *leName;
     QSlider *sOccup;

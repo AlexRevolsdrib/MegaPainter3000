@@ -34,6 +34,7 @@ void Controller:: upRow()
         lWidList[i-1]->vLayer->setLayer(layers->at(i-1));
         lWidList[i-1]->vLayer->update();
         lWid->setCurrentRow(i-1);
+
     }
     plane->updateIllustration();
     plane->update();
@@ -119,15 +120,24 @@ QWidget* Controller::AddRow()//Добавляет новую строку в QLi
           c->updateGeometry();
           widitem->bVisible = c;
         check.push_front(c);
-        QRadioButton *rb = new QRadioButton();
-        rb->setChecked(true);
+        QPushButton *rb = new QPushButton();
+        rb->setObjectName("DrawActive");
+
+//        if (!lWidList.isEmpty()){
+//            int tmp = lWid->currentRow();
+//            qDebug()<<tmp;
+//            lWidList[tmp]->bDraw->setObjectName("DrawNone");
+//            lWidList[tmp]->bDraw->style()->polish(lWidList[tmp]->bDraw);
+//        }
         widitem->bDraw = rb;
         QObject::connect(c, SIGNAL(clicked()), this, SLOT(on_visible_widget()));
         //Кнопка Поднять слой
-        /*QPushButton *bUp = new QPushButton("∧");
-        QObject::connect(bUp, SIGNAL(clicked()), this, SLOT(upRow()));
-        bUp->setFixedSize(c->size());
-        //Кнопка Опустить слой
+       // QPushButton *bUp = new QPushButton("∧");
+       //QObject::connect(bUp, SIGNAL(clicked()), this, SLOT(upRow()));
+       // bUp->setFixedSize(c->size());
+        //bUp->setObjectName("evil");
+        //bUp->setObjectName("t");
+         /*//Кнопка Опустить слой
         QPushButton *bDown = new QPushButton("∨");       
         bDown->setFixedSize(c->size());
         QObject::connect(bDown, SIGNAL(clicked()), this, SLOT(downRow()));*/
@@ -144,9 +154,9 @@ QWidget* Controller::AddRow()//Добавляет новую строку в QLi
         QObject::connect(slProz, SIGNAL(valueChanged(int)), this, SLOT(setOpacity(int)));
         widitem->sOccup = slProz;
         //Компоновка
-
+lWidList.push_front(widitem);
         QVBoxLayout *vBut = new QVBoxLayout;
-        //vBut->addWidget(bUp);
+       // vBut->addWidget(bUp);
        // vBut->addSpacing(15);
         vBut->addWidget(c);
         vBut->addWidget(rb);
@@ -179,7 +189,7 @@ QWidget* Controller::AddRow()//Добавляет новую строку в QLi
         lWid->setMouseTracking(true);
         lWid->setItemWidget(itm, tmp);
         plane->updateIllustration();
-        lWidList.push_front(widitem);
+
         return tmp;
 }
 
@@ -223,6 +233,14 @@ void Controller:: on_clicked_plane()
 void Controller:: on_current_item_change(int current)
 {
     plane->setImg(layers->at(current));
+    for (int i=0;i<lWidList.size();i++) {
+         lWidList[i]->bDraw->style()->unpolish(lWidList[i]->bDraw);
+        if(current == i){
+            qDebug()<<i;
+            lWidList[i]->bDraw->setObjectName("DrawActive");}
+        else lWidList[i]->bDraw->setObjectName("DrawNone");
+       lWidList[i]->bDraw->style()->polish(lWidList[i]->bDraw);
+    }
 }
 
 void Controller::on_listWidget_itemEntered(QListWidgetItem *item)
