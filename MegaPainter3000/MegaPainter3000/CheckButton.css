@@ -1,0 +1,31 @@
+CheckButton#Check
+{
+width: 30px;
+height: 30px;
+background-color: #ffffff;
+border-radius: 6px;
+border-width: 1px;
+border-style: outset;
+/*margin: 15px 3 3;*/
+outline: none;
+image: url('C:/Users/sasha/Desktop/glazz.png');
+/*position: relative;*/
+text-align: center;
+text-transform: none;
+border-color: #8A2BE2;
+}
+CheckButton#None
+{
+width: 30px;
+height: 30px;
+background-color: #ffffff;
+border-radius: 6px;
+border-width: 1px;
+border-style: outset;
+/*margin: 15px 3 3;*/
+outline: none;
+/*position: relative;*/
+text-align: center;
+text-transform: none;
+border-color: #8A2BE2;
+}

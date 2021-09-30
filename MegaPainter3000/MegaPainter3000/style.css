@@ -1,42 +1,4 @@
-.QCheckBox
-{
-  opacity: 0;
-}
-/*
-.QCheckBox
-{
-  background-image: url('D:/QtProject/MegaPainter3000/MegaPainter3000/img/test.jpg');
-  padding-bottom: 7 px;
-  padding-left: 7 px;
-}
 
-.QCheckBox:checked
-{
-  background-image: url('D:/QtProject/MegaPainter3000/MegaPainter3000/img/test2.jpg');
-  padding-bottom: 7 px;
-  padding-left: 7 px;
-  width: 50px;
-}*/
-/*
-QCheckBox
-{
-border: 2px solid rgb(157, 157, 157);
-border-radius: 5px;
-width: 30px;
-height: 30px;
-}
-QCheckBox::indicator {
-    width: 28px;
-    height: 28px;
-}
-QCheckBox::indicator:unchecked {
-    image: url(D:/QtProject/MegaPainter3000/MegaPainter3000/img/test.jpg);
-}
-QCheckBox::indicator:checked
-{
-    image: url(D:/QtProject/MegaPainter3000/MegaPainter3000/img/test2.jpg);
-};
-*/
 
 QSlider::groove:horizontal {
 border: 1px solid #bbb;
@@ -114,10 +76,10 @@ background-color: #ffffff;
 border-radius: 6px;
 border-width: 1px;
 border-style: outset;
-margin: 15px 3 3;
+/*margin: 15px 3 3;*/
 outline: none;
 image: url('C:/Users/sasha/Desktop/61456.png');
-position: relative;
+/*position: relative;*/
 text-align: center;
 text-transform: none;
 border-color: #8A2BE2;
@@ -131,9 +93,9 @@ background-color: #ffffff;
 border-radius: 6px;
 border-width: 1px;
 border-style: outset;
-margin: 15px 3 3;
+/*margin: 15px 3 3;*/
 outline: none;
-position: relative;
+/*position: relative;*/
 text-align: center;
 text-transform: none;
 border-color: #8A2BE2;

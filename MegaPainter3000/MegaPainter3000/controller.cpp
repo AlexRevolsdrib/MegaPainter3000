@@ -107,18 +107,18 @@ QWidget* Controller::AddRow()//Добавляет новую строку в QLi
         widitem->vLayer = v;
         vislayers.push_front(v);
         //Видимость слоя
-        QCheckBox *c = new QCheckBox;
-        c->setMouseTracking(true);
-        //c->setFixedSize(30, 30);
-                c->setChecked(true);
-        c->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-//        c->setMaximumSize(30,30);
-        c->setFixedSize(30, 30);
-        c->setIconSize(QSize(30,30));
-
-//        c->setMinimumSize(30,30);
-          c->updateGeometry();
-          widitem->bVisible = c;
+//        QCheckBox *c = new QCheckBox;
+//        c->setMouseTracking(true);
+//        c->setChecked(true);
+//        c->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+//        c->setFixedSize(30, 30);
+//        c->setIconSize(QSize(30,30));
+//        c->updateGeometry();
+//          widitem->bVisible = c;
+          CheckButton *c = new CheckButton;
+           c->setMouseTracking(true);
+           c->setChecked(true);
+           widitem->bVisible = c;
         check.push_front(c);
         QPushButton *rb = new QPushButton();
         rb->setObjectName("DrawActive");

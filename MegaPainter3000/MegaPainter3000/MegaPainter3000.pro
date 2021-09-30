@@ -25,7 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        checkbuttton.cpp \
+        checkbutton.cpp \
         colorone.cpp \
         colorpallete.cpp \
         controller.cpp \
@@ -36,7 +36,7 @@ SOURCES += \
         vislayer.cpp
 
 HEADERS += \
-        checkbuttton.h \
+        checkbutton.h \
         colorone.h \
         colorpallete.h \
         controller.h \
@@ -56,4 +56,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES +=
 
 DISTFILES += \
+    CheckButton.css \
     style.css

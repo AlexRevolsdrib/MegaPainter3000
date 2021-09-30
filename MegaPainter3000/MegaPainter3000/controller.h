@@ -17,11 +17,12 @@
 //#include <widrow.h>
 #include <QListWidget>
 #include <QRadioButton>
-
+#include <checkbutton.h>
 
 struct WidOnListItem{
     int index;
-    QCheckBox *bVisible;
+    //QCheckBox *bVisible;
+    CheckButton *bVisible;
     QPushButton *bDraw;
     VisLayer *vLayer;
     QLineEdit *leName;
@@ -44,7 +45,8 @@ public:
     int enteredRow;
     void setLWid(QListWidget * ListWidget);
     void setPlane(Plane *plane);
-    QList<QCheckBox *> check;
+   // QList<QCheckBox *> check;
+    QList<CheckButton *> check;
     QList<QLineEdit *> lNames;
     QList<QSlider *> slProzs;
     Controller();
