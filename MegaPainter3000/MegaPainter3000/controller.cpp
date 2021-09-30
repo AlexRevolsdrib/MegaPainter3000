@@ -22,7 +22,8 @@ void Controller:: setOpacity(int value)
 
 void Controller:: upRow()
 {
-    int i = enteredRow;
+    //int i = enteredRow;
+    int i = lWid->currentRow();
     if(i != 0)
     {
         QString sNameLayer = lWidList[i]->leName->text();
@@ -34,6 +35,12 @@ void Controller:: upRow()
         lWidList[i-1]->vLayer->setLayer(layers->at(i-1));
         lWidList[i-1]->vLayer->update();
         lWid->setCurrentRow(i-1);
+        bool bTmp = lWidList[i]->bVisible->isChecked();
+        lWidList[i]->bVisible->setChecked(lWidList[i-1]->bVisible->isChecked());
+        lWidList[i-1]->bVisible->setChecked(bTmp);
+        int nTmp = lWidList[i]->sOccup->value();
+        lWidList[i]->sOccup->setValue(lWidList[i-1]->sOccup->value());
+        lWidList[i-1]->sOccup->setValue(nTmp);
 
     }
     plane->updateIllustration();
@@ -42,7 +49,8 @@ void Controller:: upRow()
 }
 void Controller:: downRow()
 {
-    int i = enteredRow;
+    //int i = enteredRow;
+    int i = lWid->currentRow();
     if(i != layers->size()-1)
     {
         QString sNameLayer = lWidList[i]->leName->text();
@@ -54,6 +62,12 @@ void Controller:: downRow()
         lWidList[i+1]->vLayer->setLayer(layers->at(i+1)/*tmp*/);
         lWidList[i+1]->vLayer->update();
         lWid->setCurrentRow(i+1);
+        bool bTmp = lWidList[i]->bVisible->isChecked();
+        lWidList[i]->bVisible->setChecked(lWidList[i+1]->bVisible->isChecked());
+        lWidList[i+1]->bVisible->setChecked(bTmp);
+        int nTmp = lWidList[i]->sOccup->value();
+        lWidList[i]->sOccup->setValue(lWidList[i+1]->sOccup->value());
+        lWidList[i+1]->sOccup->setValue(nTmp);
     }
     plane->updateIllustration();
     plane->update();
@@ -63,7 +77,7 @@ void Controller:: on_visible_widget()
 {
    int i = enteredRow;//lWid->currentRow();
  //  qDebug()<<enteredRow<<"!";
-   layers->at(i)->setVisible(check[i]->isChecked());
+   layers->at(i)->setVisible(lWidList[i]->bVisible->isChecked());
    plane->updateIllustration();
    plane->update();
 }
@@ -105,30 +119,14 @@ QWidget* Controller::AddRow()//Добавляет новую строку в QLi
         v->setFixedSize(80,80);
         v->update();
         widitem->vLayer = v;
-        vislayers.push_front(v);
         //Видимость слоя
-//        QCheckBox *c = new QCheckBox;
-//        c->setMouseTracking(true);
-//        c->setChecked(true);
-//        c->setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-//        c->setFixedSize(30, 30);
-//        c->setIconSize(QSize(30,30));
-//        c->updateGeometry();
-//          widitem->bVisible = c;
           CheckButton *c = new CheckButton;
            c->setMouseTracking(true);
            c->setChecked(true);
            widitem->bVisible = c;
-        check.push_front(c);
+       // check.push_front(c);
         QPushButton *rb = new QPushButton();
         rb->setObjectName("DrawActive");
-
-//        if (!lWidList.isEmpty()){
-//            int tmp = lWid->currentRow();
-//            qDebug()<<tmp;
-//            lWidList[tmp]->bDraw->setObjectName("DrawNone");
-//            lWidList[tmp]->bDraw->style()->polish(lWidList[tmp]->bDraw);
-//        }
         widitem->bDraw = rb;
         QObject::connect(c, SIGNAL(clicked()), this, SLOT(on_visible_widget()));
         //Кнопка Поднять слой
@@ -143,18 +141,18 @@ QWidget* Controller::AddRow()//Добавляет новую строку в QLi
         QObject::connect(bDown, SIGNAL(clicked()), this, SLOT(downRow()));*/
         //Имя слоя
         QLineEdit *lNameLayer = new QLineEdit(str);
-        lNames.push_front(lNameLayer);
+
         widitem->leName = lNameLayer;
         //Прозрачность слоя
         QSlider *slProz = new QSlider(Qt::Horizontal);
-        slProzs.push_front(slProz);
         slProz->setMaximum(100);
         slProz->setMinimum(0);
         slProz->setValue(100);
         QObject::connect(slProz, SIGNAL(valueChanged(int)), this, SLOT(setOpacity(int)));
+        lWidList.push_front(widitem);
         widitem->sOccup = slProz;
         //Компоновка
-lWidList.push_front(widitem);
+
         QVBoxLayout *vBut = new QVBoxLayout;
        // vBut->addWidget(bUp);
        // vBut->addSpacing(15);
@@ -162,7 +160,8 @@ lWidList.push_front(widitem);
         vBut->addWidget(rb);
       //  vBut->addSpacing(15);
       // vBut->addWidget(bDown);
-
+        // bUp->setMouseTracking(true);
+        // bDown->setMouseTracking(true);
         QVBoxLayout *vName  = new QVBoxLayout;
         vName->addWidget(lNameLayer);
         vName->addWidget(slProz);
@@ -180,8 +179,6 @@ lWidList.push_front(widitem);
 
         QWidget *tmp = new QWidget;
 
-       // bUp->setMouseTracking(true);
-       // bDown->setMouseTracking(true);
         v->setMouseTracking(true);
         tmp->setMouseTracking(true);
 
@@ -208,18 +205,22 @@ void Controller:: DeleteRow()
 {
     int i = lWid->currentRow();
     lWid->removeItemWidget(lWid->currentItem());
-    delete lWid->currentItem();
+    layers->removeAt(i);
+    delete lWidList[i]->vLayer->Img();
+    delete lWidList[i];
+    lWidList.removeAt(i);
+    /*delete lWid->currentItem();
     delete vislayers[i];
     //vislayers.removeAt(i);
     delete lNames[i];
     //lNames.removeAt(i);
    // delete listRow[i];
-    listRow.removeAt(i);
+
     //delete layers->at(i);
     layers->removeAt(i);
     delete slProzs[i];
     slProzs.removeAt(i);
-    check.removeAt(i);
+    check.removeAt(i);*/
     lWid->update();
     lWid->setCurrentRow(i-1>0?i-1:0);
     plane->updateIllustration();
@@ -236,7 +237,6 @@ void Controller:: on_current_item_change(int current)
     for (int i=0;i<lWidList.size();i++) {
          lWidList[i]->bDraw->style()->unpolish(lWidList[i]->bDraw);
         if(current == i){
-            qDebug()<<i;
             lWidList[i]->bDraw->setObjectName("DrawActive");}
         else lWidList[i]->bDraw->setObjectName("DrawNone");
        lWidList[i]->bDraw->style()->polish(lWidList[i]->bDraw);

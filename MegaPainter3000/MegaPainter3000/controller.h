@@ -16,6 +16,7 @@
 #include <QAction>
 //#include <widrow.h>
 #include <QListWidget>
+#include <QLineEdit>
 #include <QRadioButton>
 #include <checkbutton.h>
 
@@ -28,6 +29,17 @@ struct WidOnListItem{
     QLineEdit *leName;
     QSlider *sOccup;
     QListWidgetItem * LWitem;
+
+    ~WidOnListItem()
+    {
+        delete  LWitem;
+        delete bVisible;
+        delete bDraw;
+        delete vLayer;
+        delete leName;
+        delete sOccup;
+
+    }
 };
 
 
@@ -46,9 +58,9 @@ public:
     void setLWid(QListWidget * ListWidget);
     void setPlane(Plane *plane);
    // QList<QCheckBox *> check;
-    QList<CheckButton *> check;
-    QList<QLineEdit *> lNames;
-    QList<QSlider *> slProzs;
+  //  QList<CheckButton *> check;
+  //  QList<QLineEdit *> lNames;
+  //  QList<QSlider *> slProzs;
     Controller();
     QWidget *AddRow();//Добавляет новую строку в QListWidget
     void DeleteRow();

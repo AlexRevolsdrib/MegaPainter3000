@@ -65,3 +65,13 @@ void MainWindow::on_pallet_clicked(QColor color)
     ui->widColor->setColor(color);
    // ui->plane->setPen(pen);
 }
+
+void MainWindow::on_tbUP_clicked()
+{
+    controller->upRow();
+}
+
+void MainWindow::on_tbDown_clicked()
+{
+    controller->downRow();
+}

@@ -31,6 +31,10 @@ private slots:
 
     void on_pallet_clicked(QColor color);
 
+    void on_tbUP_clicked();
+
+    void on_tbDown_clicked();
+
 private:
     Ui::MainWindow *ui;
     QPen *pen;
