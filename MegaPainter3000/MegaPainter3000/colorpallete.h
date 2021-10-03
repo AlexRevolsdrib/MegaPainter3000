@@ -22,10 +22,10 @@ class ColorPallete : public QWidget
     Q_OBJECT
     void paintEvent(QPaintEvent *event);
     void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
     QImage img;
 public:
     explicit ColorPallete(QWidget *parent = nullptr);
-
 signals:
     void clicked(QColor color);
 public slots:

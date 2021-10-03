@@ -87,6 +87,7 @@ void Controller:: setPlane(Plane *plane)
     this->plane = plane;
     layers = plane->Layers();
     QObject::connect(this->plane, SIGNAL(clicked()), this, SLOT(on_clicked_plane()));
+    pen = plane->Pen();
 }
 
 void Controller:: setLWid(QListWidget *ListWidget)
@@ -173,7 +174,7 @@ QWidget* Controller::AddRow()//Добавляет новую строку в QLi
         QListWidgetItem *itm = new QListWidgetItem;
         widitem->LWitem = itm;
         lWid->insertItem(0,itm);
-        itm->setSizeHint(QSize(400, v->height()+25));
+        itm->setSizeHint(QSize(lWid->width()-100, v->height()+25));
         lWid->setCurrentItem(itm,QItemSelectionModel::ClearAndSelect);
         //lWid->setCurrentRow(0);
 
@@ -215,7 +216,6 @@ void Controller:: DeleteRow()
     delete lNames[i];
     //lNames.removeAt(i);
    // delete listRow[i];
-
     //delete layers->at(i);
     layers->removeAt(i);
     delete slProzs[i];
@@ -321,3 +321,79 @@ void Controller:: on_recal_wid_on_item(const QModelIndex &parent, int start, int
     plane->updateIllustration();
     plane->update();
 }
+
+void Controller:: setPallete(ColorPallete *pallete)
+{
+    this->pallete = pallete;
+     QObject :: connect(this->pallete,SIGNAL(clicked(QColor)),this, SLOT(on_pallet_clicked(QColor)));
+}
+void Controller:: setOne(ColorOne *colorWid)
+{
+    this->colorWid = colorWid;
+}
+void Controller:: setSpinRGB(QSpinBox *sbR, QSpinBox*sbG, QSpinBox*sbB)
+{
+    this->sbR = sbR;
+    QObject::connect(this->sbR, SIGNAL(valueChanged(int)), this, SLOT(changeRed(int)));
+    this->sbG = sbG;
+    QObject::connect(this->sbG, SIGNAL(valueChanged(int)), this, SLOT(changeGreen(int)));
+    this->sbB = sbB;
+    QObject::connect(this->sbB, SIGNAL(valueChanged(int)), this, SLOT(changeBlue(int)));
+
+}
+
+void Controller:: setSliderRGB(QSlider *sR, QSlider*sG, QSlider*sB)
+{
+    this->sR = sR;
+    QObject::connect(this->sR, SIGNAL(valueChanged(int)), this, SLOT(changeRed(int)));
+    this->sG = sG;
+    QObject::connect(this->sG, SIGNAL(valueChanged(int)), this, SLOT(changeGreen(int)));
+    this->sB = sB;
+    QObject::connect(this->sB, SIGNAL(valueChanged(int)), this, SLOT(changeBlue(int)));
+
+}
+
+void Controller:: setSpinHSB(QSpinBox *sbH, QSpinBox*sbS, QSpinBox*sbBR)
+{
+    this->sbH = sbH;
+    this->sbS = sbS;
+    this->sbBR = sbBR;
+    updateColor();
+}
+
+void Controller:: updateColor()
+{
+    colorWid->setColor(pen->color());
+    sbR->setValue(pen->color().red());
+    sbG->setValue(pen->color().green());
+    sbB->setValue(pen->color().blue());
+    sR->setValue(pen->color().red());
+    sG->setValue(pen->color().green());
+    sB->setValue(pen->color().blue());
+    sbH->setValue(pen->color().hsvHue());
+    sbS->setValue(pen->color().hsvSaturation());
+    sbBR->setValue(pen->color().lightness());
+}
+
+void Controller::on_pallet_clicked(QColor color)
+{
+    pen->setColor(color);
+    updateColor();
+}
+
+void Controller:: changeRed(int red)
+{
+    pen->setColor(QColor(red,pen->color().green(),pen->color().blue()));
+    updateColor();
+}
+void Controller:: changeGreen(int green)
+{
+    pen->setColor(QColor(pen->color().red(),green,pen->color().blue()));
+    updateColor();
+}
+void Controller:: changeBlue(int blue)
+{
+    pen->setColor(QColor(pen->color().red(),pen->color().green(),blue));
+    updateColor();
+}
+

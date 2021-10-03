@@ -16,8 +16,6 @@ public:
     explicit CheckButton(QWidget *parent = nullptr);
     bool isChecked();
     void setChecked(bool checked);
-
-
 signals:
 
 public slots:

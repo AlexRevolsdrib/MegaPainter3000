@@ -11,7 +11,7 @@ QSlider::sub-page:horizontal {
 background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1,
     stop: 0 #66e, stop: 1 #bbf);
 background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,
-    stop: 0 #bbf, stop: 1 #55f);
+    stop: 0 #FFD, stop: 1 #C73);
 border: 1px solid #777;
 height: 10px;
 border-radius: 4px;
@@ -82,7 +82,7 @@ image: url('C:/Users/sasha/Desktop/61456.png');
 /*position: relative;*/
 text-align: center;
 text-transform: none;
-border-color: #8A2BE2;
+border-color: #995C2D;
 }
 
 QPushButton#DrawNone {
@@ -96,10 +96,59 @@ border-style: outset;
 /*margin: 15px 3 3;*/
 outline: none;
 /*position: relative;*/
-text-align: center;
-text-transform: none;
-border-color: #8A2BE2;
+border-color: #995C2D;
 }
 
 
 
+QToolButton{
+
+background-color: #FFDC73;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, 0));
+  border: 1px solid #FF7640;
+  border-radius: 5;
+
+}
+/*
+QLabel{
+color: #995C2D;
+}
+
+*/
+
+QWidget#scrollAreaWidgetContents
+{
+
+background-color: #66A3D2;
+}
+/*
+QSpinBox {
+background-color: #66A3D2;
+}
+
+
+QSpinBox::up-button {
+background-color: #FFDC73;
+border-width: 1px;
+width: 10px;
+}
+
+
+
+QSpinBox::down-button {
+background-color: #FFDC73;
+image: url('C:/Users/sasha/Desktop/61456.png');
+border-width: 2px;
+width: 10px;
+}
+
+*/
+QSpinBox::up-button {
+width: 10px;
+}
+
+
+
+QSpinBox::down-button {
+width: 10px;
+}

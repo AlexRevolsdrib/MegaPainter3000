@@ -7,6 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    pen = new QPen(Qt::red);
+    pen->setWidth(5);
+    ui->plane->setPen(pen);
     controller = new Controller();
     controller->setPlane(ui->plane);
     controller->setLWid(ui->listWidget);
@@ -14,12 +17,15 @@ MainWindow::MainWindow(QWidget *parent) :
 //    controller->AddRow();
     ui->plane->setInstrument(inPen);
 
-    QObject :: connect(ui->pallet,SIGNAL(clicked(QColor)),this, SLOT(on_pallet_clicked(QColor)));
+//    QObject :: connect(ui->pallet,SIGNAL(clicked(QColor)),this, SLOT(on_pallet_clicked(QColor)));
  // QObject :: connect(this->plane, SIGNAL(clicked()), this, SLOT(on_clicked_plane()));
-    pen = new QPen(Qt::red);
-    ui->plane->setPen(pen);
-    pen->setWidth(5);
 
+
+    controller->setOne(ui->widColor);
+    controller->setPallete(ui->pallet);
+    controller->setSpinRGB(ui->sbR,ui->sbG,ui->sbB);
+    controller->setSliderRGB(ui->sR,ui->sG,ui->sB);
+    controller->setSpinHSB(ui->sbH,ui->sbS,ui->sbBR);
 }
 
 MainWindow::~MainWindow()
@@ -61,8 +67,8 @@ void MainWindow::on_tbPlusMany_clicked()
 
 void MainWindow::on_pallet_clicked(QColor color)
 {
-    pen->setColor(color);
-    ui->widColor->setColor(color);
+//    pen->setColor(color);
+//    ui->widColor->setColor(color);
    // ui->plane->setPen(pen);
 }
 

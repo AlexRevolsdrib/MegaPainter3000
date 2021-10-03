@@ -15,7 +15,10 @@ Plane::Plane(QWidget *parent) : QWidget(parent)
     SubLayer = nullptr;
 }
 
-
+QPen* Plane:: Pen()
+{
+    return pen;
+}
 
 int Plane:: getInstrument()
 {

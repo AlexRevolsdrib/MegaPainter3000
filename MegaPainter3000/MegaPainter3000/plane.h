@@ -62,6 +62,7 @@ public:
     QList<Layer*>* Layers();
     Layer* getActiveLayer();
     void updateIllustration();
+    QPen* Pen();
 private:
     bool shootRect(); // снять выделение
     //обработка событий
