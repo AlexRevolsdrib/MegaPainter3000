@@ -30,6 +30,8 @@ void ColorPallete:: mousePressEvent(QMouseEvent *event)
 }
 void ColorPallete:: mouseMoveEvent(QMouseEvent *event)
 {
-    emit clicked(img.pixelColor(event->pos()));
+    if((event->pos().x()>=0 && event->pos().x()<=width())
+        && ((event->pos().y()>=0 && event->pos().y()<=height())))
+        emit clicked(img.pixelColor(event->pos()));
     event->accept();
 }

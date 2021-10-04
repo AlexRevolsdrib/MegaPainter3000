@@ -78,7 +78,7 @@ border-width: 1px;
 border-style: outset;
 /*margin: 15px 3 3;*/
 outline: none;
-image: url('C:/Users/sasha/Desktop/61456.png');
+image: url('./img/61456.png');
 /*position: relative;*/
 text-align: center;
 text-transform: none;
@@ -109,6 +109,55 @@ background-color: #FFDC73;
   border-radius: 5;
 
 }
+
+QToolButton#tbPen{
+image: url('./img/pen-removebg-preview.png');
+}
+QToolButton#tbDelete{
+image: url('./img/delete.png');
+}
+QToolButton#tbAdd{
+image: url('./img/add-removebg-preview.png');
+}
+QToolButton#tbCircle{
+image: url('./img/elips-removebg-preview.png');
+}
+QToolButton#tbLine{
+image: url('./img/line-removebg-preview.png');
+}
+QToolButton#tbErasing{
+image: url('./img/lastic-removebg-preview.png');
+}
+QToolButton#tbLupa{
+image: url('./img/lupa-removebg-preview.png');
+}
+QToolButton#tbPipetka{
+image: url('./img/pipetka-removebg-preview.png');
+}
+QToolButton#tbRect{
+image: url('./img/rect-removebg-preview.png');
+}
+QToolButton#tbVidel{
+image: url('./img/vydel-removebg-preview.png');
+}
+QToolButton#tbZalivka{
+image: url('./img/zaliv-removebg-preview.png');
+}
+QToolButton#tbDown{
+image: url('./img/down-removebg-preview.png');
+}
+QToolButton#tbUp{
+image: url('./img/up-removebg-preview.png');
+}
+QToolButton#tbPlusDown{
+image: url('./img/downJoin-removebg-preview.png');
+}
+QToolButton#tbPlusUp{
+image: url('./img/upJoin-removebg-preview.png');
+}
+
+
+
 /*
 QLabel{
 color: #995C2D;

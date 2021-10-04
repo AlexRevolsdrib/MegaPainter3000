@@ -268,7 +268,7 @@ void Plane:: mouseMoveEvent(QMouseEvent *event){
          pCircle.setPen(*pen);
          pCircle.setBrush(QBrush(Qt::red, Qt::NoBrush));
          QRect rect;
-         double w = abs(begin.x() - end.x()), h = abs(begin.y() - end.y());
+         int w = abs(begin.x() - end.x()), h = abs(begin.y() - end.y());
          pCircle.drawEllipse(begin, w, h);
          pCircle.end();
        break;

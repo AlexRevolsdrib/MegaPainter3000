@@ -8,7 +8,7 @@ border-width: 1px;
 border-style: outset;
 /*margin: 15px 3 3;*/
 outline: none;
-image: url('C:/Users/sasha/Desktop/glazz.png');
+image: url('./img/glazz.png');
 /*position: relative;*/
 text-align: center;
 text-transform: none;
