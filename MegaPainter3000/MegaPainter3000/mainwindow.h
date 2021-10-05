@@ -35,6 +35,8 @@ private slots:
 
     void on_tbDown_clicked();
 
+    void on_tbUp_clicked();
+
 private:
     Ui::MainWindow *ui;
     QPen *pen;

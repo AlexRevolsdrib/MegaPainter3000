@@ -31,7 +31,7 @@ struct WidOnListItem{
     QListWidgetItem * LWitem;
     ~WidOnListItem()
     {
-        delete LWitem;
+       // delete LWitem;
         delete bVisible;
         delete bDraw;
         delete vLayer;
@@ -48,7 +48,6 @@ class Controller: public QWidget
     QListWidget *lWid; //QListWidget c ui
     QList<QWidget*> listRow; // Список виджетов в QListWidget, которые содержат layout
     QList<Layer* > *layers;
-    QList<VisLayer* > vislayers;
     Plane *plane;
     QList<WidOnListItem *> lWidList;
     ColorPallete *pallete;
@@ -57,6 +56,8 @@ class Controller: public QWidget
     QSpinBox *sbH,*sbS,*sbBR;
     QSlider *sR,*sG,*sB;
     QPen * pen;
+    QSlider *slColor;
+    QColor colorStyleSl;
 public:
 
     void setPlane(Plane *plane);
@@ -73,6 +74,7 @@ public:
     void joinLayerMany();//Объедиить выделенные слоем
     //Работа с цветом
     void setPallete(ColorPallete *pallete);
+    void setColorSlider(QSlider *slColor);
     void setOne(ColorOne *colorWid);
     void setSpinRGB(QSpinBox *sbR, QSpinBox*sbG, QSpinBox*sbB);
     void setSliderRGB(QSlider *sR, QSlider*sG, QSlider*sB);
@@ -91,6 +93,8 @@ public slots:
     void changeRed(int red);
     void changeGreen(int green);
     void changeBlue(int blue);
+    void changeLightness(int lightness);
+
 };
 
 #endif // CONTROLLER_H

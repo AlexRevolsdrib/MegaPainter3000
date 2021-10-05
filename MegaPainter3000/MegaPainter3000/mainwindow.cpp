@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     controller->setPlane(ui->plane);
     controller->setLWid(ui->listWidget);
     controller->AddRow();
+    controller->setColorSlider(ui->ColorSlider);
 //    controller->AddRow();
     ui->plane->setInstrument(inPen);
 
@@ -80,4 +81,9 @@ void MainWindow::on_tbUP_clicked()
 void MainWindow::on_tbDown_clicked()
 {
     controller->downRow();
+}
+
+void MainWindow::on_tbUp_clicked()
+{
+     controller->upRow();
 }

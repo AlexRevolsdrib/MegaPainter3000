@@ -206,24 +206,33 @@ void Controller:: DeleteRow()
 {
     int i = lWid->currentRow();
     lWid->removeItemWidget(lWid->currentItem());
+    delete lWid->currentItem();
+    listRow.removeAt(i);
     layers->removeAt(i);
     delete lWidList[i]->vLayer->Img();
     delete lWidList[i];
     lWidList.removeAt(i);
-    /*delete lWid->currentItem();
-    delete vislayers[i];
-    //vislayers.removeAt(i);
-    delete lNames[i];
-    //lNames.removeAt(i);
-   // delete listRow[i];
-    //delete layers->at(i);
-    layers->removeAt(i);
-    delete slProzs[i];
-    slProzs.removeAt(i);
-    check.removeAt(i);*/
     lWid->update();
+
     lWid->setCurrentRow(i-1>0?i-1:0);
     plane->updateIllustration();
+//    int i = lWid->currentRow();
+//    lWid->removeItemWidget(lWid->currentItem());
+//    delete lWid->currentItem();
+//    delete lWidList[i]->vLayer;
+//    //vislayers.removeAt(i);
+//    delete lWidList[i]->leName;
+//    //lNames.removeAt(i);
+//   // delete listRow[i];
+//    listRow.removeAt(i);
+//    //delete layers->at(i);
+//    layers->removeAt(i);
+//    delete lWidList[i]->sOccup;
+
+//    lWid->update();
+//    lWid->setCurrentRow(i-1>0?i-1:0);
+//    plane->updateIllustration();
+
 }
 
 void Controller:: on_clicked_plane()
@@ -233,6 +242,7 @@ void Controller:: on_clicked_plane()
 
 void Controller:: on_current_item_change(int current)
 {
+
     plane->setImg(layers->at(current));
     for (int i=0;i<lWidList.size();i++) {
          lWidList[i]->bDraw->style()->unpolish(lWidList[i]->bDraw);
@@ -363,6 +373,7 @@ void Controller:: setSpinHSB(QSpinBox *sbH, QSpinBox*sbS, QSpinBox*sbBR)
 
 void Controller:: updateColor()
 {
+    if (pen->color()!= Qt::white && pen->color()!= Qt::black) colorStyleSl.setHsl(pen->color().hslHue(),pen->color().hslSaturation(),127);
     colorWid->setColor(pen->color());
     sbR->setValue(pen->color().red());
     sbG->setValue(pen->color().green());
@@ -373,11 +384,17 @@ void Controller:: updateColor()
     sbH->setValue(pen->color().hsvHue());
     sbS->setValue(pen->color().hsvSaturation());
     sbBR->setValue(pen->color().lightness());
+    slColor->setValue(pen->color().lightness());
+    slColor->setStyleSheet("QSlider::groove:vertical {background: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, "
+                           "stop:0 rgba(0,0,0,255)  stop:1 rgba(255,255,255,255), "
+                           "stop :0.5 rgba("+ QString::number(colorStyleSl.red())+","+QString::number(colorStyleSl.green())+","+QString::number(colorStyleSl.blue())+", 255))}");
 }
 
 void Controller::on_pallet_clicked(QColor color)
 {
+    colorStyleSl = color;
     pen->setColor(color);
+
     updateColor();
 }
 
@@ -396,4 +413,16 @@ void Controller:: changeBlue(int blue)
     pen->setColor(QColor(pen->color().red(),pen->color().green(),blue));
     updateColor();
 }
+void  Controller:: setColorSlider(QSlider *slColor)
+{
+    this->slColor = slColor;
+    QObject::connect(this->slColor, SIGNAL(valueChanged(int)), this, SLOT(changeLightness(int)));
+}
 
+void Controller:: changeLightness(int lightness)
+{
+    QColor c;
+    c.setHsl(colorStyleSl.hsvHue(),colorStyleSl.hsvSaturation(),lightness);
+    pen->setColor(c);
+    updateColor();
+}

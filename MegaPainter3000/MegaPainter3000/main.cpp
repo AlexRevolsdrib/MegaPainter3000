@@ -11,6 +11,5 @@ int main(int argc, char *argv[])
     a.setStyleSheet(file.readAll());
     MainWindow w;
     w.showMaximized();
-    qDebug()<<argv[0];
     return a.exec();
 }

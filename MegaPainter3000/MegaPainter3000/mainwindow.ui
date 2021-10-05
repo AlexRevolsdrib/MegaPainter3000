@@ -182,7 +182,7 @@
                <number>0</number>
               </property>
               <item>
-               <widget class="QSlider" name="verticalSlider">
+               <widget class="QSlider" name="ColorSlider">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                   <horstretch>0</horstretch>
