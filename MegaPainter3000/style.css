@@ -1,0 +1,236 @@
+
+
+QSlider::groove:horizontal {
+border: 1px solid #bbb;
+background: white;
+height: 10px;
+border-radius: 4px;
+}
+
+QSlider::sub-page:horizontal {
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+    stop: 0 #66e, stop: 1 #bbf);
+background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,
+    stop: 0 #FFD, stop: 1 #C73);
+border: 1px solid #777;
+height: 10px;
+border-radius: 4px;
+}
+
+QSlider::add-page:horizontal {
+background: #fff;
+border: 1px solid #777;
+height: 10px;
+border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+    stop:0 #eee, stop:1 #ccc);
+border: 1px solid #777;
+width: 13px;
+margin-top: -2px;
+margin-bottom: -2px;
+border-radius: 4px;
+}
+
+QSlider::handle:horizontal:hover {
+background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+    stop:0 #fff, stop:1 #ddd);
+border: 1px solid #444;
+border-radius: 4px;
+}
+
+QSlider::sub-page:horizontal:disabled {
+background: #bbb;
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+background: #eee;
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #eee;
+border: 1px solid #aaa;
+border-radius: 4px;
+}
+
+QPushButton#slider {
+background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+    stop:0 #ccc, stop:1 #aaa);
+border: 1px solid #777;
+max-width: 13px;
+min-width: 13px;
+max-height: 12px;
+min-height: 12px;
+border-radius: 4px;
+}
+
+QPushButton#DrawActive {
+
+width: 30px;
+height: 30px;
+background-color: #ffffff;
+border-radius: 6px;
+border-width: 1px;
+border-style: outset;
+/*margin: 15px 3 3;*/
+outline: none;
+image: url('./img/61456.png');
+/*position: relative;*/
+text-align: center;
+text-transform: none;
+border-color: #995C2D;
+}
+
+QPushButton#DrawNone {
+
+width: 30px;
+height: 30px;
+background-color: #ffffff;
+border-radius: 6px;
+border-width: 1px;
+border-style: outset;
+/*margin: 15px 3 3;*/
+outline: none;
+/*position: relative;*/
+border-color: #995C2D;
+}
+
+
+
+QToolButton{
+
+background-color: #FFDC73;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, .15), rgba(255, 255, 255, 0));
+  border: 1px solid #FF7640;
+  border-radius: 5;
+
+}
+
+QToolButton#tbPen{
+image: url('./img/pen-removebg-preview.png');
+}
+QToolButton#tbDelete{
+image: url('./img/delete.png');
+}
+QToolButton#tbAdd{
+image: url('./img/add-removebg-preview.png');
+}
+QToolButton#tbCircle{
+image: url('./img/elips-removebg-preview.png');
+}
+QToolButton#tbLine{
+image: url('./img/line-removebg-preview.png');
+}
+QToolButton#tbErasing{
+image: url('./img/lastic-removebg-preview.png');
+}
+QToolButton#tbLupa{
+image: url('./img/lupa-removebg-preview.png');
+}
+QToolButton#tbPipetka{
+image: url('./img/pipetka-removebg-preview.png');
+}
+QToolButton#tbRect{
+image: url('./img/rect-removebg-preview.png');
+}
+QToolButton#tbVidel{
+image: url('./img/vydel-removebg-preview.png');
+}
+QToolButton#tbZalivka{
+image: url('./img/zaliv-removebg-preview.png');
+}
+QToolButton#tbDown{
+image: url('./img/down-removebg-preview.png');
+}
+QToolButton#tbUp{
+image: url('./img/up-removebg-preview.png');
+}
+QToolButton#tbPlusDown{
+image: url('./img/downJoin-removebg-preview.png');
+}
+QToolButton#tbPlusUp{
+image: url('./img/upJoin-removebg-preview.png');
+}
+
+
+
+/*
+QLabel{
+color: #995C2D;
+}
+
+*/
+
+QWidget#scrollAreaWidgetContents
+{
+
+background-color: #66A3D2;
+}
+/*
+QSpinBox {
+background-color: #66A3D2;
+}
+
+
+QSpinBox::up-button {
+background-color: #FFDC73;
+border-width: 1px;
+width: 10px;
+}
+
+
+
+QSpinBox::down-button {
+background-color: #FFDC73;
+image: url('C:/Users/sasha/Desktop/61456.png');
+border-width: 2px;
+width: 10px;
+}
+
+*/
+QSpinBox::up-button {
+width: 10px;
+background-color: #FFDC73;
+border-width: 1px;
+border-radius: 4px;
+image: url('./img/plus.png');
+/*image: url('./img/up-removebg-preview.png');*/
+}
+
+
+
+QSpinBox::down-button {
+background-color: #FFDC73;
+border-width: 1px;
+width: 10px;
+border-radius: 4px;
+image: url('./img/minus-removebg-preview.png');
+/*image: url('./img/down-removebg-preview.png');*/
+}
+
+QSlider::groove:vertical {
+    border: 1px solid #999999;
+    width: 10px;
+   /* background: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0 #000000,  stop:1 #ffffff, stop :0.5 #ff0000,);*/
+    margin: 2px 0;
+}
+
+QSlider::handle:vertical {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #66A3D2, stop:1 #FFDC73);
+    border: 1px solid #5c5c5c;
+    height: 6px;
+    margin: -2px 0; /* handle is placed by default on the contents rect of the groove. Expand outside the groove */
+    border-radius: 3px;
+}
+/*
+QWidget#scrollAreaWidgetContents_2
+{background: qradialgradient(cx:1, cy:0, radius: 2,
+                fx:0.5, fy:0.5, stop:0 #ffffff, stop:0.5 #66A5FF)
+                qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0  #66A3D2, stop: 0.4 rgba(10, 20, 30, 40),
+                                stop:1  #66A5FF)
+}*/
