@@ -24,6 +24,7 @@ class ColorPallete : public QWidget
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     QImage img;
+    QImage tmp;
 public:
     explicit ColorPallete(QWidget *parent = nullptr);
 signals:
